@@ -22,10 +22,7 @@
   "homepage": "https://github.com/kota65535/github-asdf-parse-action#readme",
   "dependencies": {
     "@actions/core": "1.10.0",
-    "@actions/github": "5.1.1",
-    "axios": "0.27.2",
-    "strip-ansi": "6.0.0",
-    "yaml": "2.2.1"
+    "@actions/github": "5.1.1"
   },
   "devDependencies": {
     "@vercel/ncc": "0.36.0",
