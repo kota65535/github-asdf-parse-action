@@ -6,6 +6,8 @@ const main = async () => {
 
   for (const line of toolVersions.split("\n")) {
     const [name, version] = line.split();
+    core.setOutput(name, version);
+
     const pattern = core.getInput(name);
     if (pattern) {
       const match = version.match(pattern);
@@ -15,7 +17,6 @@ const main = async () => {
         }
       }
     }
-    core.setOutput(name, version);
   }
 };
 
