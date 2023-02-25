@@ -19,7 +19,7 @@ const main = async () => {
       if (match && match.groups) {
         for (const [k, v] of Object.entries(match.groups)) {
           const nameWithGroup = `${name}-${k}`;
-          console.info(`${nameWithGroup}: ${version}`);
+          console.info(`${nameWithGroup}: ${v}`);
           core.setOutput(nameWithGroup, v);
         }
       }
