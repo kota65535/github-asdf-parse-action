@@ -1,8 +1,8 @@
 name: "ASDF Parse"
 description: "Parses asdf .tool-versions"
 branding:
-  icon: "cloud"
-  color: "purple"
+  icon: "settings"
+  color: "white"
 runs:
   using: "node16"
   main: "dist/index.js"
