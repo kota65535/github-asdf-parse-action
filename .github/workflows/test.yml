@@ -27,7 +27,7 @@ jobs:
         uses: ./
         id: sut
         with:
-          java: "(?<disribution>\w+)-(?<major>\d+)"
+          java: "(?<disribution>\\w+)-(?<major>\\d+)"
       - name: echo
         run: |
           echo "${{ steps.sut.outputs.nodejs }}"
