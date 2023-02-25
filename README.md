@@ -16,14 +16,14 @@ The tool versions can be obtained from the outputs map by the tool name.
 
 ```yaml
 
-- name: Parse asdf .tool-versions
-  uses: kota65535/github-asdf-parse-action@v1
-  id: versions
+  - name: Parse asdf .tool-versions
+    uses: kota65535/github-asdf-parse-action@v1
+    id: versions
 
-- name: Show outputs
-  run: |
-    echo "${{ steps.versions.outputs.java }}"     # => corretto-17.0.5.8.1
-    echo "${{ steps.versions.outputs.nodejs }}"   # => 16.19.0
+  - name: Show outputs
+    run: |
+      echo "${{ steps.versions.outputs.java }}"     # => corretto-17.0.5.8.1
+      echo "${{ steps.versions.outputs.nodejs }}"   # => 16.19.0
 
 ```
 
@@ -34,22 +34,24 @@ not only the entire one.
 The matched named groups can be obtained from the outputs map by `${tool name}-${group name}`.
 
 ```yaml
-      - name: Parse asdf .tool-versions
-        uses: kota65535/github-asdf-parse-action@v1
-        id: versions
-        with:
-          java: "^(?<distribution>\\w+)-(?<major>\\d+)"
 
-      - name: Show outputs
-        run: |
-          echo "${{ steps.versions.outputs.java }}"               # => corretto-17.0.5.8.1
-          echo "${{ steps.versions.outputs.java-distribution }}"  # => corretto
-          echo "${{ steps.versions.outputs.java-major }}"         # => 17
+  - name: Parse asdf .tool-versions
+    uses: kota65535/github-asdf-parse-action@v1
+    id: versions
+    with:
+      java: "^(?<distribution>\\w+)-(?<major>\\d+)"
 
-      # Example
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          distribution: ${{ steps.versions.outputs.java-distribution }}   # => corretto
-          java-version: ${{ steps.versions.outputs.java-major }}          # => 17
+  - name: Show outputs
+    run: |
+      echo "${{ steps.versions.outputs.java }}"               # => corretto-17.0.5.8.1
+      echo "${{ steps.versions.outputs.java-distribution }}"  # => corretto
+      echo "${{ steps.versions.outputs.java-major }}"         # => 17
+
+  # Example
+  - name: Setup Java
+    uses: actions/setup-java@v3
+    with:
+      distribution: ${{ steps.versions.outputs.java-distribution }}   # => corretto
+      java-version: ${{ steps.versions.outputs.java-major }}          # => 17
+
 ```
