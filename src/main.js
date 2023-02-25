@@ -6,6 +6,7 @@ const main = async () => {
 
   for (const line of toolVersions.split("\n")) {
     const [name, version] = line.split(" ");
+    console.info(name, version);
     core.setOutput(name, version);
 
     // const pattern = core.getInput(name);
