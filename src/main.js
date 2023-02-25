@@ -1,0 +1,22 @@
+const core = require("@actions/core");
+const fs = require("fs");
+
+const main = async () => {
+  const toolVersions = fs.readFileSync(".tool-versions", "utf-8");
+
+  for (const line of toolVersions.split("\n")) {
+    const [name, version] = line.split();
+    const pattern = core.getInput(name);
+    if (pattern) {
+      const match = version.match(pattern);
+      if (match) {
+        for (const [k, v] of Object.entries(match)) {
+          core.setOutput(`${name}-${k}`, v);
+        }
+      }
+    }
+    core.setOutput(name, version);
+  }
+};
+
+module.exports = main;
