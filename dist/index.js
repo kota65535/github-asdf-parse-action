@@ -2698,7 +2698,7 @@ const main = async () => {
   const toolVersions = fs.readFileSync(".tool-versions", "utf-8");
 
   for (const line of toolVersions.split("\n")) {
-    const [name, version] = line.split();
+    const [name, version] = line.split(" ");
     core.setOutput(name, version);
 
     const pattern = core.getInput(name);
