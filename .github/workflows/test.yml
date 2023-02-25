@@ -1,0 +1,36 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - README.md
+  pull_request:
+
+
+jobs:
+  show-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show github context object
+        run: echo $JSON
+        env:
+          JSON: ${{ toJSON(github) }}
+  
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Parse asdf .tool-versions
+        uses: ./
+        id: sut
+        with:
+          java: "^(?<distribution>\\w+)-(?<major>\\d+)"
+      - name: Assert outputs
+        run: |
+          [ "${{ steps.sut.outputs.nodejs }}" = "16.19.0" ]
+          [ "${{ steps.sut.outputs.java }}" = "corretto-17.0.5.8.1" ]
+          [ "${{ steps.sut.outputs.java-distribution }}" = "corretto" ]
+          [ "${{ steps.sut.outputs.java-major }}" = "17" ]
