@@ -24,7 +24,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Parse asdf .tool-versions
-        uses: ./
+        uses: kota65535/github-asdf-parse-action@v1
         id: sut
         with:
           java: "^(?<distribution>\\w+)-(?<major>\\d+)"
