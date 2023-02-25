@@ -2700,17 +2700,19 @@ const main = async () => {
   for (const line of toolVersions.split("\n")) {
     const [name, version] = line.split(" ");
     if (name && version) {
-      console.info(name, version);
+      console.info(`${name}: ${version}`);
       core.setOutput(name, version);
     }
 
+    // get pattern input with the tool name
     const pattern = core.getInput(name);
     if (pattern) {
       const match = version.match(pattern);
-      if (match) {
+      // named capturing groups should be present
+      if (match && match.groups) {
         for (const [k, v] of Object.entries(match.groups)) {
           const nameWithGroup = `${name}-${k}`;
-          console.info(nameWithGroup, v);
+          console.info(`${nameWithGroup}: ${version}`);
           core.setOutput(nameWithGroup, v);
         }
       }
