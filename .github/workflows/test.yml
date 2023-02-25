@@ -27,7 +27,7 @@ jobs:
         uses: ./
         id: sut
         with:
-          java: "^\\w+"
+          java: "^(?<distribution>\\w+)-(?<major>\\d+)"
       - name: Assert outputs
         run: |
           [ "${{ steps.sut.outputs.nodejs }}" = "16.19.0" ]
