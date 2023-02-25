@@ -8,15 +8,15 @@ const main = async () => {
     const [name, version] = line.split(" ");
     core.setOutput(name, version);
 
-    const pattern = core.getInput(name);
-    if (pattern) {
-      const match = version.match(pattern);
-      if (match) {
-        for (const [k, v] of Object.entries(match)) {
-          core.setOutput(`${name}-${k}`, v);
-        }
-      }
-    }
+    // const pattern = core.getInput(name);
+    // if (pattern) {
+    //   const match = version.match(pattern);
+    //   if (match) {
+    //     for (const [k, v] of Object.entries(match)) {
+    //       core.setOutput(`${name}-${k}`, v);
+    //     }
+    //   }
+    // }
   }
 };
 
