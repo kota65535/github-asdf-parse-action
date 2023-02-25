@@ -15,8 +15,8 @@ const main = async () => {
     if (pattern) {
       const match = version.match(pattern);
       if (match) {
-        for (const [k, v] of Object.entries(match)) {
-          const nameWithGroup = `${name}-${k}`
+        for (const [k, v] of Object.entries(match.groups)) {
+          const nameWithGroup = `${name}-${k}`;
           console.info(nameWithGroup, v);
           core.setOutput(nameWithGroup, v);
         }
