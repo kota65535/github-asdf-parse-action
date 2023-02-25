@@ -39,19 +39,19 @@ The matched named groups can be obtained from the outputs map by `${tool name}-$
     uses: kota65535/github-asdf-parse-action@v1
     id: versions
     with:
-      java: "^(?<distribution>\\w+)-(?<major>\\d+)"
+      java: "^(?<distro>\\w+)-(?<major>\\d+)"
 
   - name: Show outputs
     run: |
-      echo "${{ steps.versions.outputs.java }}"               # => corretto-17.0.5.8.1
-      echo "${{ steps.versions.outputs.java-distribution }}"  # => corretto
-      echo "${{ steps.versions.outputs.java-major }}"         # => 17
+      echo "${{ steps.versions.outputs.java }}"         # => corretto-17.0.5.8.1
+      echo "${{ steps.versions.outputs.java-distro }}"  # => corretto
+      echo "${{ steps.versions.outputs.java-major }}"   # => 17
 
   # Example
   - name: Setup Java
     uses: actions/setup-java@v3
     with:
-      distribution: ${{ steps.versions.outputs.java-distribution }}   # => corretto
-      java-version: ${{ steps.versions.outputs.java-major }}          # => 17
+      distribution: ${{ steps.versions.outputs.java-distro }}   # => corretto
+      java-version: ${{ steps.versions.outputs.java-major }}    # => 17
 
 ```
