@@ -11,15 +11,17 @@ const main = async () => {
       core.setOutput(name, version);
     }
 
-    // const pattern = core.getInput(name);
-    // if (pattern) {
-    //   const match = version.match(pattern);
-    //   if (match) {
-    //     for (const [k, v] of Object.entries(match)) {
-    //       core.setOutput(`${name}-${k}`, v);
-    //     }
-    //   }
-    // }
+    const pattern = core.getInput(name);
+    if (pattern) {
+      const match = version.match(pattern);
+      if (match) {
+        for (const [k, v] of Object.entries(match)) {
+          const nameWithGroup = `${name}-${k}`
+          console.info(nameWithGroup, v);
+          core.setOutput(nameWithGroup, v);
+        }
+      }
+    }
   }
 };
 

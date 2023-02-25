@@ -26,6 +26,11 @@ jobs:
       - name: Parse asdf .tool-versions
         uses: ./
         id: sut
+        with:
+          java: "(?<disribution>\w+)-(?<major>\d+)"
       - name: echo
         run: |
-          echo "${{ steps.sut.outputs }}"
+          echo "${{ steps.sut.outputs.nodejs }}"
+          echo "${{ steps.sut.outputs.java }}"
+          echo "${{ steps.sut.outputs.java-disribution }}"
+          echo "${{ steps.sut.outputs.java-major }}"
