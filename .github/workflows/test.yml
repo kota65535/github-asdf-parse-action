@@ -25,12 +25,20 @@ jobs:
         uses: actions/checkout@v3
       - name: Parse asdf .tool-versions
         uses: ./
-        id: sut
+        id: versions
         with:
           java: "^(?<distribution>\\w+)-(?<major>\\d+)"
       - name: Assert outputs
         run: |
-          [ "${{ steps.sut.outputs.nodejs }}" = "16.19.0" ]
-          [ "${{ steps.sut.outputs.java }}" = "corretto-17.0.5.8.1" ]
-          [ "${{ steps.sut.outputs.java-distribution }}" = "corretto" ]
-          [ "${{ steps.sut.outputs.java-major }}" = "17" ]
+          [ "${{ steps.versions.outputs.nodejs }}" = "16.19.0" ]
+          [ "${{ steps.versions.outputs.java }}" = "corretto-17.0.5.8.1" ]
+          [ "${{ steps.versions.outputs.java-distribution }}" = "corretto" ]
+          [ "${{ steps.versions.outputs.java-major }}" = "17" ]
+      - name: Parse another asdf .tool-versions
+        uses: ./
+        id: another
+        with:
+          path: .github/workflows
+      - name: Assert outputs
+        run: |
+          [ "${{ steps.another.outputs.python }}" = "3.11.3" ]
