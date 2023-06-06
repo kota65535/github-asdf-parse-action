@@ -3,6 +3,9 @@ description: "Parses asdf .tool-versions"
 branding:
   icon: "settings"
   color: "white"
+inputs:
+  path:
+    description: "File or directory path where `.tool-versions` file locates"
 runs:
   using: "node16"
   main: "dist/index.js"

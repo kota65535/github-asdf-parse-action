@@ -1,10 +1,23 @@
 const core = require("@actions/core");
 const fs = require("fs");
+const path = require("path");
+
+const VERSIONS_FILE = ".tool-versions";
 
 const main = async () => {
-  const toolVersions = fs.readFileSync(".tool-versions", "utf-8");
+  let p = core.getInput("path");
 
-  for (const line of toolVersions.split("\n")) {
+  if (p) {
+    const stats = fs.statSync(p);
+    if (stats.isDirectory()) {
+      p = path.join(p, VERSIONS_FILE);
+    }
+  } else {
+    p = VERSIONS_FILE;
+  }
+  const versions = fs.readFileSync(p, "utf-8");
+
+  for (const line of versions.split("\n")) {
     const [name, version] = line.split(" ");
     if (name && version) {
       console.info(`${name}: ${version}`);
