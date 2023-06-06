@@ -34,11 +34,19 @@ jobs:
           [ "${{ steps.versions.outputs.java }}" = "corretto-17.0.5.8.1" ]
           [ "${{ steps.versions.outputs.java-distribution }}" = "corretto" ]
           [ "${{ steps.versions.outputs.java-major }}" = "17" ]
-      - name: Parse another asdf .tool-versions
+      - name: Parse another asdf .tool-versions by directory path
         uses: ./
-        id: another
+        id: by-dir
         with:
           path: .github/workflows
       - name: Assert outputs
         run: |
-          [ "${{ steps.another.outputs.python }}" = "3.11.3" ]
+          [ "${{ steps.by-dir.outputs.python }}" = "3.11.3" ]
+      - name: Parse another asdf .tool-versions by file path
+        uses: ./
+        id: by-file
+        with:
+          path: .github/workflows/.tool-versions
+      - name: Assert outputs
+        run: |
+          [ "${{ steps.by-file.outputs.python }}" = "3.11.3" ]
