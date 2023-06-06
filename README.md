@@ -29,10 +29,10 @@ The tool versions can be obtained from the outputs map by the tool name.
 
 ## Inputs
 
-| Name          | Description                                                                     | Required | Default                |
-|---------------|---------------------------------------------------------------------------------|----------|------------------------|
-| `path`        | File or directory path where `.tool-versions` file locates                      | No       | Root of the repository |
-| **Tool name** | A regular expression to get part of the version string for the tool. See below. | No       | N/A                    |
+| Name          | Description                                                                          | Required | Default                |
+|---------------|--------------------------------------------------------------------------------------|----------|------------------------|
+| `path`        | File or directory path where `.tool-versions` file locates                           | No       | Root of the repository |
+| **Tool name** | Regular expression to obtain the part of the version string for the tool. See below. | No       | N/A                    |
 
 You can specify a custom regular expression with named groups for each tool to obtain the part of the version string,
 not only the entire one.
