@@ -1,6 +1,6 @@
 {
   "name": "github-asdf-parse-action",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "GitHub Action for parsing asdf .tool-versions file",
   "main": "src/index.js",
   "scripts": {
