@@ -41,7 +41,7 @@ jobs:
           path: .github/workflows
       - name: Assert outputs
         run: |
-          [ "${{ steps.by-dir.outputs.python }}" = "3.11.3" ]
+          [ "${{ steps.by-dir.outputs.python }}" = "3.11.4" ]
       - name: Parse another asdf .tool-versions by file path
         uses: ./
         id: by-file
@@ -49,4 +49,4 @@ jobs:
           path: .github/workflows/.tool-versions
       - name: Assert outputs
         run: |
-          [ "${{ steps.by-file.outputs.python }}" = "3.11.3" ]
+          [ "${{ steps.by-file.outputs.python }}" = "3.11.4" ]
