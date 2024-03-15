@@ -30,7 +30,7 @@ jobs:
           java: "^(?<distribution>\\w+)-(?<major>\\d+)"
       - name: Assert outputs
         run: |
-          [ "${{ steps.versions.outputs.nodejs }}" = "16.20.1" ]
+          [ "${{ steps.versions.outputs.nodejs }}" = "20.11.1" ]
           [ "${{ steps.versions.outputs.java }}" = "corretto-17.0.5.8.1" ]
           [ "${{ steps.versions.outputs.java-distribution }}" = "corretto" ]
           [ "${{ steps.versions.outputs.java-major }}" = "17" ]
