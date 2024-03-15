@@ -7,5 +7,5 @@ inputs:
   path:
     description: "File or directory path where `.tool-versions` file locates"
 runs:
-  using: "node16"
+  using: "node20"
   main: "dist/index.js"
