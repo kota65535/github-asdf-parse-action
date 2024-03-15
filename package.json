@@ -4,7 +4,7 @@
   "description": "GitHub Action for parsing asdf .tool-versions file",
   "main": "src/index.js",
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky",
     "build": "ncc build src/index.js",
     "lint": "eslint --fix \"src/**/*.js\"",
     "format": "prettier --write \"src/**/*.js\""
@@ -29,7 +29,7 @@
     "eslint": "8.43.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-config-standard": "17.1.0",
-    "husky": "8.0.3",
+    "husky": "9.0.11",
     "prettier": "3.2.5"
   }
 }
